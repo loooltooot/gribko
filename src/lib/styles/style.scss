@@ -1,0 +1,85 @@
+@font-face {
+    font-family: Stolzl;
+    src: url("fonts/Stolzl-Regular.ttf");
+    font-weight: 500;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Stolzl;
+    src: url("fonts/Stolzl-Bold.ttf");
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: Stolzl;
+    src: url("fonts/Stolzl-Light.ttf");
+    font-weight: 300;
+    font-style: normal;
+}
+
+:root {
+    --primary-color: #3BD055;
+    --second-color: #B1F045;
+
+    --root-font-size: .83vw; // 16px
+    --h2-font: 2em; // 32px
+    --big-font: 6rem; // 96px
+    --font-family: Stolzl, sans-serif;
+
+    --side-padding: 6.25vw 10.42vw 0;
+    --text-container-padding: 0 30.47vw;
+}
+
+* {
+    font-size: var(--root-font-size);
+    font-family: var(--font-family);
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+body {
+    background-color: #000;
+    min-height: 100vh;
+    overflow-x: clip;
+
+    main {
+        min-height: 100vh;
+        padding: var(--side-padding);
+        box-sizing: border-box;
+    }
+}
+
+ul {
+    padding: 0;
+    list-style: none;
+    display: flex;
+    margin: 0;
+}
+
+.disable-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+h2 {
+    text-shadow: 0px 2px 0px #3BD055;
+}
+
+.big-text {
+    text-shadow: 0px 8px 0px #3bd055;
+    font-size: var(--big-font);
+    font-weight: 700;
+}
+
+::selection {
+    background-color: var(--second-color);
+    color: white;
+}
