@@ -23,13 +23,14 @@
     --primary-color: #3BD055;
     --second-color: #B1F045;
 
+    --s-font-size: .75em;
     --root-font-size: .83vw; // 16px
     --h2-font: 2em; // 32px
     --big-font: 6rem; // 96px
     --font-family: Stolzl, sans-serif;
 
     --side-padding: 6.25vw 10.42vw 0;
-    --text-container-padding: 0 30.47vw;
+    --text-container-padding: 0 20.05vw;
 }
 
 * {
@@ -70,11 +71,12 @@ ul {
 }
 
 h2 {
-    text-shadow: 0px 2px 0px #3BD055;
+    text-shadow: 0px .1vw 0px #3BD055;
+    font-size: var(--h2-font);
 }
 
 .big-text {
-    text-shadow: 0px 8px 0px #3bd055;
+    text-shadow: 0px .42vw 0px #3bd055;
     font-size: var(--big-font);
     font-weight: 700;
 }
@@ -82,4 +84,12 @@ h2 {
 ::selection {
     background-color: var(--second-color);
     color: white;
+}
+
+section {
+    padding: var(--text-container-padding);
+}
+
+input:focus {
+    outline: none;
 }

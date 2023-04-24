@@ -1,24 +1,26 @@
 <footer>
-	<svg
-		width="461"
-		height="222"
-		viewBox="0 0 461 222"
-		fill="none"
-		xmlns="http://www.w3.org/2000/svg"
-	>
-		<path
-			d="M172.46 322.169V138.865H47C47 138.865 72.7955 -12 230.695 -14"
-			stroke="black"
-			stroke-width="78.1682"
-			stroke-miterlimit="10"
-		/>
-		<path
-			d="M288.54 322.169V138.865H414C414 138.865 388.595 -12 230.696 -14"
-			stroke="black"
-			stroke-width="78.1682"
-			stroke-miterlimit="10"
-		/>
-	</svg>
+	<a href="/">
+		<svg
+			width="461"
+			height="222"
+			viewBox="0 0 461 222"
+			fill="none"
+			xmlns="http://www.w3.org/2000/svg"
+		>
+			<path
+				d="M172.46 322.169V138.865H47C47 138.865 72.7955 -12 230.695 -14"
+				stroke="black"
+				stroke-width="78.1682"
+				stroke-miterlimit="10"
+			/>
+			<path
+				d="M288.54 322.169V138.865H414C414 138.865 388.595 -12 230.696 -14"
+				stroke="black"
+				stroke-width="78.1682"
+				stroke-miterlimit="10"
+			/>
+		</svg>
+	</a>
 	<div id="footer-content">
 		<span id="disclaimer"
 			>чрезмерное употребление комбучи вредит вашему здоровью</span
@@ -48,7 +50,7 @@
 		padding-right: 10.42vw;
 		padding-top: 1.3vw;
 		padding-bottom: 1.3vw;
-		padding-left: 30.83vw;
+		padding-left: 25vw;
 		display: flex;
 		justify-content: space-between;
 		height: 11.56vw;

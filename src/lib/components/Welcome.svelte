@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import { onMount } from "svelte";
 	import { fade } from "svelte/transition";
 
@@ -7,14 +7,19 @@
 	onMount(() => {
 		mounted = true;
 	});
+
+	function disappear(node: Element) {
+		return {
+			duration: 1,
+			css: () => {
+				return `opacity: 0; position: absolute;`;
+			},
+		};
+	}
 </script>
 
 {#if mounted}
-	<div
-		in:fade={{ duration: 1000 }}
-		out:fade={{ duration: 300 }}
-		id="welcome-container"
-	>
+	<section in:fade={{ duration: 1000 }} out:disappear id="welcome-container">
 		<ul>
 			<li>
 				<span class="big-text">#1</span><span class="content"
@@ -38,7 +43,7 @@
 			height="427"
 			alt="ГрибКо производство комбучи"
 		/>
-	</div>
+	</section>
 {/if}
 
 <style lang="scss">
@@ -52,7 +57,7 @@
 		}
 	}
 
-	div#welcome-container {
+	#welcome-container {
 		border: 0.1vw var(--primary-color) solid;
 		padding: 3.18vw 2.29vw;
 		height: 39.58vw;
