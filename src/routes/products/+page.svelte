@@ -2,10 +2,9 @@
 	import { onMount } from "svelte";
 	import api from "$lib/scripts/api.js";
 	import type iProduct from "$lib/models/product";
-	import { fade } from "svelte/transition";
 	import productsStore from "$lib/stores/products";
-	import { PUBLIC_REMOTE_IMGS_FOLDER } from "$env/static/public";
 	import ProductCard from "$lib/components/ProductCard.svelte";
+	import Suprise from "$lib/components/Suprise.svelte";
 
 	let products: Array<iProduct> = [];
 	let searchQuery: String;
@@ -30,6 +29,7 @@
 </script>
 
 <section>
+	<Suprise />
 	<header>
 		<h2>Товары:</h2>
 		<input type="text" bind:value={searchQuery} placeholder="поиск..." />
@@ -44,12 +44,16 @@
 </section>
 
 <style lang="scss">
+	section {
+		padding: 0;
+	}
 	header {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		margin-top: 2vw;
+		margin-top: 3.49vw;
 		margin-bottom: 1vw;
+		padding: var(--text-container-padding);
 
 		input[type="text"] {
 			height: 1.56vw;
@@ -68,6 +72,7 @@
 		column-gap: 1.35vw;
 		row-gap: 0.94vw;
 		margin-bottom: 5.21vw;
+		padding: var(--text-container-padding);
 
 		li {
 			width: 8.75vw;
