@@ -21,7 +21,9 @@
 			<div class="card">
 				<div class="img-wrapper">
 					<img
-						src={PUBLIC_REMOTE_IMGS_FOLDER + product.imgs}
+						src={PUBLIC_REMOTE_IMGS_FOLDER +
+							"small/" +
+							product.imgs}
 						width="168"
 						alt="здесь могла быть картинка"
 						loading="lazy"

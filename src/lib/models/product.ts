@@ -1,5 +1,5 @@
 interface iProduct {
-    id: number,
+    [id: string]: number | string,
     title: string,
     description: string,
     ccal: number,
