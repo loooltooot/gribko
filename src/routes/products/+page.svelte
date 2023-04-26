@@ -103,7 +103,6 @@
 		justify-content: space-between;
 		align-items: center;
 		margin-top: 3.49vw;
-		margin-bottom: 1vw;
 		padding: var(--text-container-padding);
 
 		div#filters {

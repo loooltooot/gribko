@@ -1,12 +1,22 @@
 <section>
 	<header>
-		<h2>Войти в аккаунт</h2>
+		<h2>Зарегистрировать аккаунт</h2>
 	</header>
 	<form>
 		<input required type="email" name="email" placeholder="Email" />
 		<input required type="password" name="password" placeholder="Пароль" />
+		<input
+			required
+			type="password"
+			name="password-confirmation"
+			placeholder="Подтвердите пароль"
+		/>
 
-		<input on:click|preventDefault={() => {}} type="submit" value="Войти" />
+		<input
+			on:click|preventDefault={() => {}}
+			type="submit"
+			value="Зарегистрироваться"
+		/>
 	</form>
 </section>
 

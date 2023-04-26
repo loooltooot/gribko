@@ -88,6 +88,10 @@ h2 {
 
 section {
     padding: var(--text-container-padding);
+
+    header {
+        margin-bottom: 1vw;
+    }
 }
 
 input:focus {

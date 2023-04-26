@@ -4,6 +4,7 @@
 	import Cart from "./Cart.svelte";
 	import Logo from "./Logo.svelte";
 	import Auth from "./Auth.svelte";
+	import loggedIn from "$lib/stores/login";
 
 	const paths = [
 		{ href: "/products", text: "товары", hovered: false, darked: false },
@@ -52,7 +53,9 @@
 			</ul>
 		</nav>
 		<div class="cart-auth">
-			<Cart />
+			{#if $loggedIn}
+				<Cart />
+			{/if}
 			<Auth />
 		</div>
 	</header>

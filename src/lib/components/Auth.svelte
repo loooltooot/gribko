@@ -1,8 +1,8 @@
 <script>
-	let authorized = false;
+	import loggedIn from "$lib/stores/login";
 </script>
 
-{#if !authorized}
+{#if !$loggedIn}
 	<div>
 		<a href="/login">войти</a>
 		<a href="/signup">зарегистрироваться</a>
