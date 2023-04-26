@@ -3,6 +3,7 @@
 	import { slide } from "svelte/transition";
 	import Cart from "./Cart.svelte";
 	import Logo from "./Logo.svelte";
+	import Auth from "./Auth.svelte";
 
 	const paths = [
 		{ href: "/products", text: "товары", hovered: false, darked: false },
@@ -50,7 +51,10 @@
 				{/each}
 			</ul>
 		</nav>
-		<Cart />
+		<div class="cart-auth">
+			<Cart />
+			<Auth />
+		</div>
 	</header>
 {/if}
 
@@ -86,6 +90,12 @@
 			.darked a {
 				color: #5f5f5f;
 			}
+		}
+
+		div.cart-auth {
+			display: flex;
+			align-items: center;
+			column-gap: 0.5vw;
 		}
 	}
 </style>

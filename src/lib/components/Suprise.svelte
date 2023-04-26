@@ -66,7 +66,7 @@
 
 <style lang="scss">
 	div#suprise {
-		background-color: var(--primary-color);
+		background: linear-gradient(225deg, #b1f045 0%, #3bd055 100%);
 		padding: var(--text-container-padding);
 		padding-top: 1vw;
 		padding-bottom: 1vw;
