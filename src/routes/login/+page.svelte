@@ -1,12 +1,56 @@
+<script lang="ts">
+	import loggedIn from "$lib/stores/login";
+	import api from "$lib/scripts/api";
+	let form: HTMLFormElement;
+
+	let email = "";
+	let password = "";
+
+	let travelButton: HTMLAnchorElement;
+</script>
+
 <section>
+	<a href="/products" class="hidden" bind:this={travelButton} />
 	<header>
 		<h2>Войти в аккаунт</h2>
 	</header>
-	<form>
-		<input required type="email" name="email" placeholder="Email" />
-		<input required type="password" name="password" placeholder="Пароль" />
+	<form bind:this={form}>
+		<input
+			bind:value={email}
+			required
+			type="email"
+			name="email"
+			placeholder="Email"
+		/>
+		<input
+			bind:value={password}
+			required
+			type="password"
+			name="password"
+			placeholder="Пароль"
+		/>
 
-		<input on:click|preventDefault={() => {}} type="submit" value="Войти" />
+		<input
+			on:click|preventDefault={() => {
+				if (email && password) {
+					api.post("/login", form)
+						.then((response) => {
+							if (response.status == 200) {
+								const authToken = response.data.authToken;
+
+								sessionStorage.setItem("authToken", authToken);
+								loggedIn.set(true);
+								travelButton.click();
+							}
+						})
+						.catch((error) => {
+							// Handle error response
+						});
+				}
+			}}
+			type="submit"
+			value="Войти"
+		/>
 	</form>
 </section>
 

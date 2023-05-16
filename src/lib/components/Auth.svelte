@@ -1,4 +1,5 @@
 <script>
+	import api from "$lib/scripts/api";
 	import loggedIn from "$lib/stores/login";
 </script>
 
@@ -8,12 +9,25 @@
 		<a href="/signup">зарегистрироваться</a>
 	</div>
 {:else}
+	<!-- svelte-ignore a11y-click-events-have-key-events -->
 	<svg
 		width="40"
 		height="40"
 		viewBox="0 0 40 40"
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
+		on:click={() => {
+			api.post("/logout")
+				.then((response) => {
+					if (response.status == 200) {
+						sessionStorage.removeItem("authToken");
+						loggedIn.set(false);
+					}
+				})
+				.catch((error) => {
+					alert(error.response.status);
+				});
+		}}
 	>
 		<path
 			fill-rule="evenodd"

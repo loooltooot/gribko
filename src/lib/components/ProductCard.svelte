@@ -2,6 +2,7 @@
 	import { PUBLIC_REMOTE_IMGS_FOLDER } from "$env/static/public";
 	import type iProduct from "$lib/models/product";
 	import { createLoadObserver } from "$lib/scripts/loadObserverFactory";
+	import loggedIn from "$lib/stores/login";
 	import { fade } from "svelte/transition";
 
 	export let product: iProduct;
@@ -33,6 +34,11 @@
 			<span class="price">{product.price}₽</span>
 			<span class="ccal">{product.ccal}ккал</span>
 		</div>
+		{#if $loggedIn}
+			<div class="add-to-cart">
+				<span>+</span>
+			</div>
+		{/if}
 	</div>
 </a>
 
@@ -42,11 +48,39 @@
 		flex-direction: column;
 		justify-content: space-between;
 		height: 100%;
+		position: relative;
+		overflow: clip;
 
 		&:hover {
 			div.img-wrapper {
 				box-shadow: 0px 0.21vw 0px white;
 				border-color: white;
+			}
+
+			div.add-to-cart {
+				top: 0;
+			}
+		}
+
+		div.add-to-cart {
+			position: absolute;
+			top: -1.35vw;
+			left: 0;
+			background-color: var(--primary-color);
+			width: 100%;
+			transition: 0.3s ease;
+
+			&:hover {
+				background-color: var(--darken-primary-color);
+			}
+
+			span {
+				padding: 0.2vw 0;
+				color: white;
+				display: block;
+				width: 100%;
+				text-align: center;
+				font-weight: 700;
 			}
 		}
 
