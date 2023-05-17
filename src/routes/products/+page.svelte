@@ -71,7 +71,9 @@
 			{/each}
 		</ul>
 	{:else}
-		<div class="loader">Загрузка...</div>
+		<div class="loader">
+			{searchQuery ? "Скоро добавим" : "Загрузка..."}
+		</div>
 	{/if}
 </section>
 

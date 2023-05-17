@@ -3,6 +3,8 @@
 	import type iProduct from "$lib/models/product.js";
 	import api from "$lib/scripts/api.js";
 	import { createLoadObserver } from "$lib/scripts/loadObserverFactory.js";
+	import cartStore from "$lib/stores/cart.js";
+	import loggedIn from "$lib/stores/login.js";
 	import { onMount } from "svelte";
 
 	export let data;
@@ -19,6 +21,11 @@
 	const onload = createLoadObserver(() => {
 		loaded = true;
 	});
+
+	function addToCart(id: string) {
+		$cartStore = [...$cartStore, id];
+		localStorage.setItem("cart", $cartStore.join("&"));
+	}
 </script>
 
 <section>
@@ -40,6 +47,14 @@
 				</header>
 				<p>{product.description}</p>
 				<span class="amount">0.5л</span>
+				{#if $loggedIn}
+					<button
+						class="focused-button"
+						on:click|stopPropagation|preventDefault={() =>
+							addToCart(product.id.toString())}
+						>Добавить в корзину</button
+					>
+				{/if}
 			</div>
 		</div>
 	{:else}
@@ -108,6 +123,14 @@
 					span.price {
 						margin-right: 0.21vw;
 					}
+				}
+
+				button {
+					margin-top: 4vw;
+				}
+
+				span.amount {
+					display: block;
 				}
 			}
 

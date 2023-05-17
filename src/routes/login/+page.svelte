@@ -1,12 +1,19 @@
 <script lang="ts">
 	import loggedIn from "$lib/stores/login";
 	import api from "$lib/scripts/api";
-	let form: HTMLFormElement;
+	import { onMount } from "svelte";
 
+	let form: HTMLFormElement;
 	let email = "";
 	let password = "";
 
 	let travelButton: HTMLAnchorElement;
+
+	let fetching = false;
+
+	onMount(() => {
+		document.title = "Вход";
+	});
 </script>
 
 <section>
@@ -33,6 +40,7 @@
 		<input
 			on:click|preventDefault={() => {
 				if (email && password) {
+					fetching = true;
 					api.post("/login", form)
 						.then((response) => {
 							if (response.status == 200) {
@@ -41,6 +49,7 @@
 								sessionStorage.setItem("authToken", authToken);
 								loggedIn.set(true);
 								travelButton.click();
+								fetching = false;
 							}
 						})
 						.catch((error) => {
@@ -49,7 +58,7 @@
 				}
 			}}
 			type="submit"
-			value="Войти"
+			value={fetching ? "Проверка" : "Вход"}
 		/>
 	</form>
 </section>

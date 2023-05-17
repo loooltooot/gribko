@@ -6,7 +6,7 @@
 {#if !$loggedIn}
 	<div>
 		<a href="/login">войти</a>
-		<a href="/signup">зарегистрироваться</a>
+		<a href="/signup" class="focused-button">зарегистрироваться</a>
 	</div>
 {:else}
 	<!-- svelte-ignore a11y-click-events-have-key-events -->
@@ -49,17 +49,6 @@
 
 			&:first-child:hover {
 				color: var(--primary-color);
-			}
-
-			&:nth-child(2) {
-				background-color: var(--primary-color);
-				color: #000;
-				border: 0.1vw var(--primary-color) solid;
-
-				&:hover {
-					background-color: transparent;
-					color: white;
-				}
 			}
 		}
 

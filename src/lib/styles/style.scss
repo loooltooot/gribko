@@ -22,7 +22,7 @@
 :root {
     --primary-color: #3BD055;
     --second-color: #B1F045;
-    --darken-primary-color: #38c44f;
+    --darken-primary-color: #34b649;
     --darken-second-color: #93c738;
 
     --s-font-size: .75em;
@@ -102,4 +102,18 @@ input:focus {
 
 a.hidden {
     display: none;
+}
+
+.focused-button {
+    padding: 0.3vw 0.7vw;
+    transition: background-color 0.3s ease, color 0.1s ease;
+    background-color: var(--primary-color);
+    color: #000;
+    border: 0.1vw var(--primary-color) solid;
+    cursor: pointer;
+
+    &:hover {
+        background-color: transparent;
+        color: white;
+    }
 }

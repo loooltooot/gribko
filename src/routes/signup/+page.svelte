@@ -1,6 +1,7 @@
 <script lang="ts">
 	import loggedIn from "$lib/stores/login";
 	import api from "$lib/scripts/api";
+	import { onMount } from "svelte";
 	let form: HTMLFormElement;
 
 	let email = "";
@@ -8,6 +9,12 @@
 	let passwordConfirmation = "";
 
 	let travelButton: HTMLAnchorElement;
+
+	let fetching = false;
+
+	onMount(() => {
+		document.title = "Регистрация";
+	})
 </script>
 
 <section>
@@ -49,6 +56,7 @@
 					passwordConfirmation &&
 					email
 				) {
+					fetching = true;
 					api.post("/signup", form)
 						.then((response) => {
 							const authToken = response.data.authToken;
@@ -56,6 +64,7 @@
 							sessionStorage.setItem("authToken", authToken);
 							loggedIn.set(true);
 							travelButton.click();
+							fetching = false;
 						})
 						.catch((error) => {
 							alert(error.response.status);
@@ -63,7 +72,7 @@
 				}
 			}}
 			type="submit"
-			value="Зарегистрироваться"
+			value={fetching ? "Регистрация..." : "Зарегистрироваться"}
 		/>
 	</form>
 </section>

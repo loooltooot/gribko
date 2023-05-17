@@ -2,6 +2,7 @@
 	import { PUBLIC_REMOTE_IMGS_FOLDER } from "$env/static/public";
 	import type iProduct from "$lib/models/product";
 	import { createLoadObserver } from "$lib/scripts/loadObserverFactory";
+	import cartStore from "$lib/stores/cart";
 	import loggedIn from "$lib/stores/login";
 	import { fade } from "svelte/transition";
 
@@ -12,6 +13,11 @@
 	const onload = createLoadObserver(() => {
 		loaded = true;
 	});
+
+	function addToCart(id: string) {
+		$cartStore = [...$cartStore, id];
+		localStorage.setItem("cart", $cartStore.join("&"));
+	}
 </script>
 
 <a in:fade href="/products/{product.id}">
@@ -35,7 +41,11 @@
 			<span class="ccal">{product.ccal}ккал</span>
 		</div>
 		{#if $loggedIn}
-			<div class="add-to-cart">
+			<div
+				class="add-to-cart"
+				on:click|stopPropagation|preventDefault={() =>
+					addToCart(product.id.toString())}
+			>
 				<span>+</span>
 			</div>
 		{/if}
