@@ -26,7 +26,7 @@
 			<img
 				src={PUBLIC_REMOTE_IMGS_FOLDER + "small/" + product.imgs}
 				width="168"
-				alt="здесь могла быть картинка"
+				alt={product.title}
 				loading="lazy"
 				use:onload
 			/>

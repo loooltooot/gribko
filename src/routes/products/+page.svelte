@@ -78,25 +78,6 @@
 </section>
 
 <style lang="scss">
-	@keyframes skewLoader {
-		from {
-			transform: scaleX(1);
-		}
-
-		to {
-			transform: scaleX(0.9);
-		}
-	}
-	div.loader {
-		width: 100%;
-		background-color: var(--second-color);
-		padding: var(--text-container-padding);
-		padding-top: 1vw;
-		padding-bottom: 1vw;
-		box-sizing: border-box;
-		color: #000;
-		animation: skewLoader 1s ease infinite forwards alternate;
-	}
 	section {
 		padding: 0;
 	}
