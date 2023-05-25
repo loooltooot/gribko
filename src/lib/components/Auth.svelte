@@ -1,6 +1,8 @@
 <script>
+	import { PUBLIC_BACKEND_SERVER_PATH } from "$env/static/public";
 	import api from "$lib/scripts/api";
 	import loggedIn from "$lib/stores/login";
+	import axios from "axios";
 </script>
 
 {#if !$loggedIn}
@@ -17,7 +19,8 @@
 		fill="none"
 		xmlns="http://www.w3.org/2000/svg"
 		on:click={() => {
-			api.post("/logout")
+			axios
+				.post(`${PUBLIC_BACKEND_SERVER_PATH}/logout`)
 				.then((response) => {
 					if (response.status == 200) {
 						sessionStorage.removeItem("authToken");

@@ -2,6 +2,8 @@
 	import loggedIn from "$lib/stores/login";
 	import api from "$lib/scripts/api";
 	import { onMount } from "svelte";
+	import axios from "axios";
+	import { PUBLIC_BACKEND_SERVER_PATH } from "$env/static/public";
 	let form: HTMLFormElement;
 
 	let email = "";
@@ -14,7 +16,7 @@
 
 	onMount(() => {
 		document.title = "Регистрация";
-	})
+	});
 </script>
 
 <section>
@@ -57,7 +59,8 @@
 					email
 				) {
 					fetching = true;
-					api.post("/signup", form)
+					axios
+						.post(`${PUBLIC_BACKEND_SERVER_PATH}/signup`, form)
 						.then((response) => {
 							const authToken = response.data.authToken;
 

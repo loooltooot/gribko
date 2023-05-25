@@ -2,6 +2,11 @@
 	import loggedIn from "$lib/stores/login";
 	import api from "$lib/scripts/api";
 	import { onMount } from "svelte";
+	import axios from "axios";
+	import {
+		PUBLIC_API_PATH,
+		PUBLIC_BACKEND_SERVER_PATH,
+	} from "$env/static/public";
 
 	let form: HTMLFormElement;
 	let email = "";
@@ -41,7 +46,8 @@
 			on:click|preventDefault={() => {
 				if (email && password) {
 					fetching = true;
-					api.post("/login", form)
+					axios
+						.post(`${PUBLIC_BACKEND_SERVER_PATH}/login`, form)
 						.then((response) => {
 							if (response.status == 200) {
 								const authToken = response.data.authToken;
